@@ -1,4 +1,5 @@
 // frontend/src/components/Navigation/index.js
+import logo from '../../assets/HavenLandingLogo.svg'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -9,16 +10,19 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul>
+  <div >
+    <div className='nav-bar__container'>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/" className='nav-text'><img src={logo}/></NavLink>
       </li>
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />
         </li>
+
       )}
-    </ul>
+    </div>
+  </div>
   );
 }
 
