@@ -16,10 +16,9 @@ export default function LandingPage() {
   
     const dispatch = useDispatch()
     useEffect(() => {
-        console.log('getSPOTS!')
     dispatch(getSpots())
     },[dispatch])
-    console.log(spots)
+    
     if(!spots.length) return null;
     
 
@@ -28,6 +27,7 @@ return(
         {spots.map((spot) => {
             return (<VenueSpotCard 
                 key={spot.id} 
+                id={spot.id}
                 name={spot.name} 
                 price={spot.price}
                 description={spot.description}

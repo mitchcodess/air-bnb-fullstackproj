@@ -26,8 +26,8 @@ module.exports = {
         country: 'US',
         lat: 27.235,
         lng: 124.14,
-        name: "Beach House",
-        description: 'Beach',
+        name: "SummerVille Villa",
+        description: 'Summerville Resort is a new and prestigious collection of town-home villas just 5 miles from the entrance to Walt Disney World! Be among the first to stay in this contemporary vacation rental with pristine finishes & amenities. No need to wait in line to shower here; each of the 4 bedrooms has its own attached bath. After a day exploring the parks, come home to indulgence at the Resort, which features a community hot tub, heated pool, fitness center, playground, and a sleek Clubhouse.',
         price: 150,
       },
       {

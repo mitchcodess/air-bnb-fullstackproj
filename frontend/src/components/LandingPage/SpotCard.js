@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, redirect} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './SpotCard.css'
 import defaultimg from '../../assets/default.webp'
