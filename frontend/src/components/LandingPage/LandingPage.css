@@ -1,0 +1,13 @@
+.spots-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: calc(100vh - 10px);
+    background-color: rgb(254, 253, 253);
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+    max-width: 80vw;
+    margin: 0 auto;
+    margin-top: 10rem;
+}
+

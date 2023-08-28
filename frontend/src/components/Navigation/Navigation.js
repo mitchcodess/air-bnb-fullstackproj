@@ -19,7 +19,6 @@ function Navigation({ isLoaded }){
         <li>
           <ProfileButton user={sessionUser} />
         </li>
-
       )}
     </div>
   </div>

@@ -1,4 +1,22 @@
+:root {
+    --navgrey: #313132;
+    --lightgrey-font: #6e6e73;
+    --darkgrey-font: #1d1d1f;
+    --light-brown-main: #fefefe;
+    --blue-link: #418cd7;
+    --standard-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
+    --transition-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.19);
+    --default-gap: 1.2rem;
+    --heading-text-font-size: 1.7rem;
+    --default-hover-transition: all .3s ease-in-out;
+}   
+
 
 * {
     font-family: 'Manrope', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+

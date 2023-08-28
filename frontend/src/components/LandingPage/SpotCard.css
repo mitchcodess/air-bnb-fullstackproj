@@ -1,0 +1,30 @@
+.spot-card-description ul {
+    list-style: none;
+}
+
+.spot-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-brown-main);
+    box-shadow: var();
+    border-radius: 1rem;
+    box-shadow: var(--standard-box-shadow);
+}
+
+.spot-card:hover {
+    
+}
+
+.spot-card a:link, .spot-card a:visited{
+    text-decoration: none;
+    color: var(--darkgrey-font);
+}
+
+.spot-card img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
