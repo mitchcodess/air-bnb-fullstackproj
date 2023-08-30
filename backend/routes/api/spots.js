@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const { check } = require("express-validator");
-const { query } = require('express-validator');
+const { query } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const {
@@ -75,7 +75,6 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
     let endDateTime = endDate.getTime();
     //Comparing bookings startDate with all startDates in the database related to the booking)
 
-
     // if((bookingStart === startDateTime ||
     //   (bookingStart >= startDateTime && bookingStart <= endDateTime) ||
     //   bookingStart === endDateTime) && (bookingEnd === startDateTime ||
@@ -90,59 +89,61 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
     //   })
     // }
 
-
-    if(bookingStart <= startDateTime && bookingEnd >= endDateTime) {
+    if (bookingStart <= startDateTime && bookingEnd >= endDateTime) {
       console.log("start before startDate and end after endDate");
-     return res.status(403).json({
-        "message": "Sorry, this spot is already booked for the specified dates",
-        "errors": {
-          "startDate": "Start date conflicts with an existing booking",
-          "endDate": "End date conflicts with an existing booking",
-        }
+      return res.status(403).json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+          endDate: "End date conflicts with an existing booking",
+        },
       });
-    } 
-  
-    //if booking start date is after and end date is before
-  if(bookingStart >= startDateTime && bookingEnd <= endDateTime) {
-    console.log("start after startDate and end is before endDate");
-   return res.status(403).json({
-      "message": "Sorry, this spot is already booked for the specified dates",
-      "errors": {
-        "startDate": "Start date conflicts with an existing booking",
-        "endDate": "End date conflicts with an existing booking",
-      }
-    });
-  }
+    }
 
+    //if booking start date is after and end date is before
+    if (bookingStart >= startDateTime && bookingEnd <= endDateTime) {
+      console.log("start after startDate and end is before endDate");
+      return res.status(403).json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+          endDate: "End date conflicts with an existing booking",
+        },
+      });
+    }
 
     //If the booking date is before but end date is in before
-  
-    if(bookingStart <= startDateTime && bookingEnd <= endDateTime && (bookingEnd >= startDateTime)) {
+
+    if (
+      bookingStart <= startDateTime &&
+      bookingEnd <= endDateTime &&
+      bookingEnd >= startDateTime
+    ) {
       console.log("start before startdate but end before enddate");
-         return res.status(403).json({
-           "message": "Sorry, this spot is already booked for the specified dates",
-           "errors": {
-             "endDate": "End date conflicts with an existing booking",
-           }
-         });
-       }
+      return res.status(403).json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        errors: {
+          endDate: "End date conflicts with an existing booking",
+        },
+      });
+    }
 
-  //if booking start date is after and end date is after
+    //if booking start date is after and end date is after
 
-  if((bookingStart >= startDateTime && bookingEnd >= endDateTime) && (bookingStart <= endDateTime)) {
-    console.log("start is after startdate and end is after endDate");
-  return res.status(403).json({
-      "message": "Sorry, this spot is already booked for the specified dates",
-      "errors": {
-        "startDate": "Start date conflicts with an existing booking",
-      }
-    });
-  } 
-
-
-
-
-}
+    if (
+      bookingStart >= startDateTime &&
+      bookingEnd >= endDateTime &&
+      bookingStart <= endDateTime
+    ) {
+      console.log("start is after startdate and end is after endDate");
+      return res.status(403).json({
+        message: "Sorry, this spot is already booked for the specified dates",
+        errors: {
+          startDate: "Start date conflicts with an existing booking",
+        },
+      });
+    }
+  }
 
   const newBooking = await Booking.create({
     spotId: req.params.spotId,
@@ -516,102 +517,97 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
   });
 });
 
-
 const validateSpotQuery = [
   query("page")
-  .default(1)
-  .isInt({min: 1, max: 10})
-  .withMessage("Page must be greater than or equal to 1"),
+    .default(1)
+    .isInt({ min: 1, max: 10 })
+    .withMessage("Page must be greater than or equal to 1"),
   query("size")
-  .default(20)
-  .isInt({min: 1, max: 20})
-  .withMessage("Size must be greater than or equal to 1")
-  ,
+    .default(20)
+    .isInt({ min: 1, max: 20 })
+    .withMessage("Size must be greater than or equal to 1"),
   query("maxLat")
     .isFloat()
     .optional({ nullable: true, checkFalsy: true })
     .withMessage("Maximum latitude is invalid"),
   query("minLat")
-  
-  .isFloat()
-  .optional({ nullable: true, checkFalsy: true })
-  .withMessage("Maximum latitude is invalid"),
+    .isFloat()
+    .optional({ nullable: true, checkFalsy: true })
+    .withMessage("Maximum latitude is invalid"),
   query("maxLng")
-  .isFloat()
-  .optional({ nullable: true, checkFalsy: true })
-  .withMessage("Maximum latitude is invalid"),
+    .isFloat()
+    .optional({ nullable: true, checkFalsy: true })
+    .withMessage("Maximum latitude is invalid"),
   query("minLng")
-  .isFloat()
-  .optional({ nullable: true, checkFalsy: true })
-  .withMessage("Maximum latitude is invalid"),
+    .isFloat()
+    .optional({ nullable: true, checkFalsy: true })
+    .withMessage("Maximum latitude is invalid"),
   query("minPrice")
-    .isFloat({min: 0})
+    .isFloat({ min: 0 })
     .optional({ nullable: true, checkFalsy: true })
     .withMessage("Minimum price must be greater than or equal to 0"),
   query("maxPrice")
-    .isFloat({min: 0})
+    .isFloat({ min: 0 })
     .optional({ nullable: true, checkFalsy: true })
     .withMessage("Maximum price must be greater than or equal to 0"),
   handleValidationErrors,
 ];
 
-
-
 router.get("/", validateSpotQuery, async (req, res, next) => {
-let query = {
-  where: {},
-  include: []
-}
+  let query = {
+    where: {},
+    include: [],
+  };
 
-const page = parseInt(req.query.page);
-const size = parseInt(req.query.size);
+  const page = parseInt(req.query.page);
+  const size = parseInt(req.query.size);
 
-if (page >= 1 && size >= 1) {
+  if (page >= 1 && size >= 1) {
     query.limit = size;
     query.offset = size * (page - 1);
-}
+  }
 
-query.include.push({
-  model: Review,
-},
-{
-  model: SpotImage
-})
+  query.include.push(
+    {
+      model: Review,
+    },
+    {
+      model: SpotImage,
+    }
+  );
 
+  if (req.query.maxLat && req.query.minLat) {
+    query.where.lat = {
+      [Op.lt]: `${req.query.maxLat}`,
+      [Op.gt]: `${req.query.minLat}`,
+    };
+  } else if (req.query.maxLat) {
+    query.where.lat = { [Op.lt]: `${req.query.maxLat}` };
+  } else if (req.query.minLat) {
+    query.where.lat = { [Op.gt]: `${req.query.minLat}` };
+  }
 
-if(req.query.maxLat && req.query.minLat) {
-  query.where.lat = { [Op.lt]: `${req.query.maxLat}`, [Op.gt]: `${req.query.minLat}`};
-}
-else if (req.query.maxLat) {
-  query.where.lat = { [Op.lt]: `${req.query.maxLat}`}
-}
-else if (req.query.minLat) {
-  query.where.lat = { [Op.gt]: `${req.query.minLat}`}
-}
+  if (req.query.maxLng && req.query.minLng) {
+    query.where.lng = {
+      [Op.lt]: `${req.query.maxLng}`,
+      [Op.gt]: `${req.query.minLng}`,
+    };
+  } else if (req.query.maxLng) {
+    query.where.lng = { [Op.lt]: `${req.query.maxLng}` };
+  } else if (req.query.minLng) {
+    query.where.lng = { [Op.gt]: `${req.query.minLng}` };
+  }
 
-
-
-if(req.query.maxLng && req.query.minLng) {
-  query.where.lng = { [Op.lt]: `${req.query.maxLng}`, [Op.gt]: `${req.query.minLng}`}
-}
-else if (req.query.maxLng) {
-  query.where.lng = { [Op.lt]: `${req.query.maxLng}`}
-}
-else if (req.query.minLng) {
-  query.where.lng = { [Op.gt]: `${req.query.minLng}`}
-}
-
-if(req.query.maxPrice && req.query.minPrice) {
-  query.where.price = { [Op.lt]: `${req.query.maxPrice}`, [Op.gt]: `${req.query.minPrice}`}
-}
-else if (req.query.maxPrice) {
-  query.where.price = { [Op.lt]: `${req.query.maxPrice}`}
-}
-else if (req.query.minPrice) {
-  query.where.price = { [Op.gt]: `${req.query.minPrice}`}
-}
-
-
+  if (req.query.maxPrice && req.query.minPrice) {
+    query.where.price = {
+      [Op.lt]: `${req.query.maxPrice}`,
+      [Op.gt]: `${req.query.minPrice}`,
+    };
+  } else if (req.query.maxPrice) {
+    query.where.price = { [Op.lt]: `${req.query.maxPrice}` };
+  } else if (req.query.minPrice) {
+    query.where.price = { [Op.gt]: `${req.query.minPrice}` };
+  }
 
   const spots = await Spot.findAll(query);
 
@@ -656,7 +652,7 @@ else if (req.query.minPrice) {
   res.json({
     Spots: spotToJSON,
     page,
-    size
+    size,
   });
 });
 

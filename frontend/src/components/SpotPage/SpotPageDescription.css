@@ -1,0 +1,8 @@
+.spot-description__container {
+    display: flex;
+    max-height: 500px;
+}
+
+.spot-description-paragraph {
+    width: 70%;
+}

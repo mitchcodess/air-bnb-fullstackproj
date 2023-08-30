@@ -1,0 +1,19 @@
+.manage-button {
+    align-self: center;
+    justify-self: center;
+    width: 200px;
+    height: 90px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    background-color: rgb(194, 191, 191);
+    cursor: pointer;
+    border-radius: .6rem;
+    box-shadow: var(--standard-box-shadow);
+}
+
+.manage-container {
+
+    row-gap: 100px;
+}

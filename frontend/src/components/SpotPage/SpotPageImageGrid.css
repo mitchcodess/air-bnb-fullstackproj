@@ -1,25 +1,32 @@
 .spot-page-image__flex__container {
     display: flex;
-    justify-content: space-around;
-    width: 50%;
-    max-height: 500px;
-    margin-top: 200px;
-    margin: 0 auto;
+    margin-top: 50px;
+    width: 100%;
+    min-height: 500px;
+    max-height: 550px;
+    gap: 5px
 }
 
 .spot-page-image-main {
-min-width: 500px;
-max-height: 400px;
-background-color: green;
+    width: 50%
+    
+}
+.spot-page-image-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .spot-page-image-support__grid__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    min-width: 500px;
-    max-width: 500px;
-    min-height: 400px;
-    max-height: 300px;
-    background-color: red;
+    width: 50%;
+    gap: 5px;
+}
+
+.spot-page-image-support__grid__container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

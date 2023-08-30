@@ -16,9 +16,14 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/" className='nav-text'><img src={logo}/></NavLink>
       </li>
       {isLoaded && (
+        <>
+        <NavLink exact to ='/spots/new'> 
+          Submit your Haven
+        </NavLink>
         <li>
           <ProfileButton user={sessionUser} />
         </li>
+        </>
       )}
     </div>
   </div>

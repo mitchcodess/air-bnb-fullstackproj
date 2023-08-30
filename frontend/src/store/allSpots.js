@@ -1,6 +1,10 @@
+import { csrfFetch } from "./csrf"
 
 export const LOAD_SPOTS = "spots/LOAD_SPOTS"
-
+export const ADD_SPOT = 'spots/ADD_SPOT'
+export const LOAD_SPOT= "spot/LOAD_SPOT";
+export const UPDATE_SPOT = "spot/UPDATE_SPOT";
+export const DELETE_SPOT =  "spot/DELETE_SPOT"
 
 export const loadSpots = (spots) => {
     return {
@@ -9,8 +13,26 @@ export const loadSpots = (spots) => {
     }
 }
 
+export const addSpot = (spot) => {
+    return {
+        type: ADD_SPOT,
+        spot
+    }
+}
 
-export const getSpots = () => async (dispatch) => {
+export const deleteSpot = (id) => {
+    return {
+        type:DELETE_SPOT,
+        id
+    }
+}
+
+
+
+
+
+
+export const getSpotsThunk = () => async (dispatch) => {
 const response = await fetch ('/api/spots');
 
 if(response.ok) {
@@ -18,6 +40,55 @@ if(response.ok) {
     dispatch(loadSpots(spots))
     return spots;
 }
+}
+
+export const addSpotThunk = (spot) => async (dispatch) => {
+    const response = await csrfFetch('/api/spots', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(spot)
+    })
+
+    console.log(response)
+
+    if(response.ok) {
+        const spot = await response.json();
+        console.log(spot)
+        dispatch(addSpot(spot));
+        return spot;
+    }
+    else {
+        const error = await response.json();
+        console.log(error);
+    }
+}
+
+
+export const deleteSpotThunk = (id) => async (dispatch) => {
+    const response = await csrfFetch('/api/spots/' + id, {
+        method: 'DELETE'
+    })
+
+    if(response.ok) {
+        console.log('DELETED!')
+        dispatch(deleteSpot(id))
+        const message = await response.json();
+        return message;
+    }
+}
+
+export const updateSpotThunk = (newSpot, id) => async (dispatch) => {
+    const response = await csrfFetch('/api/spots/' + id, {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(newSpot)
+    })
+
+    if(response.ok) {
+        const newSpot = await response.json();
+        dispatch(addSpot(newSpot))
+        return newSpot
+    }
 }
 
 
@@ -35,11 +106,16 @@ const spotsReducer = (state = initialState, action) => {
             console.log(newSpots)
             })
             return {...state, allSpots: {...newSpots}};
-       
-
+       case ADD_SPOT: 
+       const newSpot = {};
+       newSpot[action.spot.id] = action.spot;
+        return {...state, allSpots: {...newSpot}}
+            case DELETE_SPOT:
+            const newState = {...state};
+            delete newState.allSpots[action.id];
+            return newState;
         default:
             return state;
-
     }
 }
 

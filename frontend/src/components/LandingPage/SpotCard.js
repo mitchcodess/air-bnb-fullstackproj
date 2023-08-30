@@ -3,7 +3,7 @@ import {NavLink, redirect} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './SpotCard.css'
 import defaultimg from '../../assets/default.webp'
-const VenueSpotCard = ({id, name, price, rating, src}) => {
+const VenueSpotCard= ({id, name, price, rating, src}) => {
 
   return (
     <div className='spot-card'>

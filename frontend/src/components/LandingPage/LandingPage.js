@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch} from 'react-redux'
 import VenueSpotCard from './SpotCard';
-import { getSpots} from '../../store/allSpots';
+import {getSpotsThunk} from '../../store/allSpots';
 import './LandingPage.css'
 
 //useEffect to get all spots
@@ -16,7 +16,7 @@ export default function LandingPage() {
   
     const dispatch = useDispatch()
     useEffect(() => {
-    dispatch(getSpots())
+    dispatch(getSpotsThunk())
     },[dispatch])
     
     if(!spots.length) return null;
