@@ -7,7 +7,6 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import SpotPage from "./components/SpotPage/SpotPage";
 import SpotForm from './components/SpotFormPage/SpotForm'
 import ManagePage from "./components/ManagePage/ManagePage";
-import { getUserDataThunk } from "./store/user";
 import UpdateSpotForm from "./components/SpotFormPage/UpdateSpot";
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +29,6 @@ function App() {
           <Route path = '/spots/:spotId/edit' element={<UpdateSpotForm/>}/>
           <Route path = '/spots/:spotId' element={<SpotPage/>}/>
           <Route path = '*' element = {<Navigate to='/'/>}/>
-        
         </Routes>
       )}
     </>

@@ -1,13 +1,32 @@
 .spots-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     height: calc(100vh - 10px);
     background-color: rgb(255, 255, 255);
     column-gap: 2rem;
     row-gap: 2.5rem;
-    max-width: 75%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 10rem;
 }
 
+.landing-logo {
+    height: 200px;
+    width: 200px;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    z-index: -1;
+}

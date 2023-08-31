@@ -1,20 +1,31 @@
 .login-modal__container {
     display: flex;
     flex-direction: column;
-    max-height: 400px;
-    min-width: 400px;
+    max-height: 320px;
+    min-width: 600px;
     max-width: 600px;
+    border-radius: .5rem;
+    align-items: center;
+
+}
+
+
+
+.login-form__container {
+
 }
 
 .login-modal__title {
     margin: 15px 15px;
     font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .login-form__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
     height: 400px;
     width: 100%;
 }
@@ -22,15 +33,27 @@
 .login-modal__login-button {
     width: 80%;
     margin: 0 auto;
-    padding: 8px 8px;
+    padding: 14px 8px;
     border-radius: .75rem;
     border: none;
-    background-color: rgba(249, 167, 132, 0.887) ;
-    color: white
+    background-color: rgba(180, 179, 181, 0.959) ;
+    box-shadow: var(--standard-box-shadow);
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
 }
 
-input[type=text], input[type=password] {
-    min-width: 70%;
-    margin-left: 60px;
+
+
+
+.login-modal-input {
+    width: 150%;
     padding: 8px 20px;
+    margin: 0 auto;
+    border-radius: .75rem;
+    border-style: solid;
+    border-color: #d0cfcf;
+  
 }

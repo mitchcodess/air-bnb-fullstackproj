@@ -3,8 +3,14 @@
 
 }
 
-.spot-card-description ul li:first-child {
-   font-weight: bold;
+.spot-card-description div:first-child {
+   font-weight: 500;
+}
+
+.spot-card-name-rating {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .spot-card {

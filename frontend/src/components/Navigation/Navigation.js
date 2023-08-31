@@ -13,13 +13,13 @@ function Navigation({ isLoaded }){
   <div >
     <div className='nav-bar__container'>
       <li>
-        <NavLink exact to="/" className='nav-text'><img src={logo}/></NavLink>
+        <NavLink exact to="/" className='nav-text'><img src={logo} className='landing-logo'/></NavLink>
       </li>
       {isLoaded && (
         <>
-        <NavLink exact to ='/spots/new'> 
+       {sessionUser && <NavLink exact to ='/spots/new'> 
           Submit your Haven
-        </NavLink>
+        </NavLink>}
         <li>
           <ProfileButton user={sessionUser} />
         </li>

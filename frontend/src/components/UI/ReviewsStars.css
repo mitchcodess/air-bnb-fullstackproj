@@ -1,0 +1,4 @@
+.review-star-number__container {
+    display: flex;
+    align-items: center;
+}

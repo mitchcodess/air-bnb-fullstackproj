@@ -370,11 +370,11 @@ router.get("/current", requireAuth, async (req, res, next) => {
     for (let j = 0; j < spotImagesOfCurrentSpot.length; j++) {
       let image = spotImagesOfCurrentSpot[j];
       if (image.preview === true) {
-        spotToJSON[i].prevewImage = image.url;
+        spotToJSON[i].previewImage = image.url;
       }
     }
-    if (!spotToJSON[i].prevewImage) {
-      spotToJSON[i].prevewImage = "No preview image found";
+    if (!spotToJSON[i].previewImage) {
+      spotToJSON[i].previewImage = "No preview image found";
     }
     delete spot.SpotImages;
   }

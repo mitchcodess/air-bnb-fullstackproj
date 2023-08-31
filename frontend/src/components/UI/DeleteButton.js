@@ -1,18 +1,19 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteSpotThunk } from '../../store/allSpots';
-
+import { deleteUserSpotThunk } from '../../store/user';
+import { useModal } from '../../context/Modal';
 function DeleteButton({id}) {
+  const {closeModal} = useModal()
 const dispatch = useDispatch();
 const handleClick = async (e) => {
     e.preventDefault();
-   let message = await dispatch(deleteSpotThunk(id))
-   console.log(message)
+   let message = await dispatch(deleteUserSpotThunk(id))
+   closeModal()
 }
 
   return (
     <button onClick={handleClick}>
-        Delete
+        Yes (Delete Venue)
     </button>
   )
 }

@@ -7,9 +7,13 @@ import LandingPage from '../LandingPage/LandingPage';
 import './ManagePage.css'
 import DeleteButton from '../UI/DeleteButton';
 import UpdateButton from '../UI/UpdateButton';
+import OpenModalButton from '../OpenModalButton/OpenModalButton';
+import DeleteSpotModal from '../DeleteSpotModal/DeleteSpotModal';
 function ManagePage() {
-    const userSpots= useSelector(state => state.user.userSpots.Spots)
-    console.log(userSpots)
+    const spots = useSelector(state => state.user)
+
+    const userSpots = Object.values(spots);
+
     const dispatch = useDispatch();
     const manage = true;
     useEffect(() => {
@@ -20,8 +24,8 @@ function ManagePage() {
   return (
     <>
     <div>
-    <h1>Need to Update or Delete your venue?</h1>
             <div className="manage-container">
+            <h1>Need to Update or Delete your Haven?</h1>
         {userSpots.map((spot) => {
             return (<>
                 <VenueSpotCard 
@@ -35,7 +39,7 @@ function ManagePage() {
                 manage = {manage}
                 />
                 <UpdateButton id={spot.id}/>
-                <DeleteButton id ={spot.id}/>
+                <OpenModalButton modalComponent={<DeleteSpotModal id={spot.id}/>} buttonText={'Delete'}/>
                  </>)
         })}
         </div>
