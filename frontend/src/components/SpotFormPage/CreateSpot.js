@@ -1,9 +1,7 @@
-import React from 'react'
-import SpotForm from './SpotForm'
+import React from "react";
+import SpotForm from "./SpotForm";
 function CreateSpot() {
-  return (
-    <SpotForm formType='create'/>
-  )
+  return <SpotForm formType="create" />;
 }
 
-export default CreateSpot
+export default CreateSpot;

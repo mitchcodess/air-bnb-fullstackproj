@@ -26,7 +26,7 @@ function SignUpFormModal() {
           firstName,
           lastName,
           password,
-        })
+        }),
       )
         .then(closeModal)
         .catch(async (res) => {
@@ -37,7 +37,8 @@ function SignUpFormModal() {
         });
     }
     return setErrors({
-      confirmPassword: "Confirm Password field must be the same as the Password field"
+      confirmPassword:
+        "Confirm Password field must be the same as the Password field",
     });
   };
 
@@ -104,9 +105,7 @@ function SignUpFormModal() {
             required
           />
         </label>
-        {errors.confirmPassword && (
-          <p>{errors.confirmPassword}</p>
-        )}
+        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
       </form>
     </>

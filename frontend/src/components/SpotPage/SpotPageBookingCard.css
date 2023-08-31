@@ -1,12 +1,11 @@
-
 .spot-page-booking-card__container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 100%;
-    border: 1px ;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  border: 1px;
 }
 
 .spot-page-booking-card__container li {
-    list-style: none;
+  list-style: none;
 }

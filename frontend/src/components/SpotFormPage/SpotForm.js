@@ -4,7 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addSpot, addSpotThunk, updateSpotThunk } from "../../store/allSpots";
-function SpotForm({id, currentCountry,  currentCity, currentAddress, currentState, currentDescription, currentName,  currentPrice, formType }) {
+function SpotForm({
+  id,
+  currentCountry,
+  currentCity,
+  currentAddress,
+  currentState,
+  currentDescription,
+  currentName,
+  currentPrice,
+  formType,
+}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [country, setCountry] = useState("");
@@ -16,24 +26,30 @@ function SpotForm({id, currentCountry,  currentCity, currentAddress, currentStat
   const [price, setPrice] = useState("");
   const [images, setImages] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
-  
 
-useEffect(() => {
-  if(formType === 'update') {
-   setCountry(currentCountry)
-   setAddress(currentAddress)
-   setCity(currentCity)
-   setState(currentState)
-   setDescription(currentDescription)
-   setName(currentName)
-   setPrice(currentPrice)
-  }
-}, [formType ,currentCountry, currentAddress, currentCity, currentState, currentDescription, currentName, currentPrice])
-
+  useEffect(() => {
+    if (formType === "update") {
+      setCountry(currentCountry);
+      setAddress(currentAddress);
+      setCity(currentCity);
+      setState(currentState);
+      setDescription(currentDescription);
+      setName(currentName);
+      setPrice(currentPrice);
+    }
+  }, [
+    formType,
+    currentCountry,
+    currentAddress,
+    currentCity,
+    currentState,
+    currentDescription,
+    currentName,
+    currentPrice,
+  ]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
 
     const payload = {
       country,
@@ -47,21 +63,19 @@ useEffect(() => {
       price,
     };
 
-    if(formType === 'update') {
-      console.log('UPDATING SPOT')
-      let updatedSpot = await dispatch(updateSpotThunk(payload, id))
+    if (formType === "update") {
+      console.log("UPDATING SPOT");
+      let updatedSpot = await dispatch(updateSpotThunk(payload, id));
 
       navigate(`/spots/${updatedSpot.id}`);
-   
-    }
-    else {
-    let newSpot = await dispatch(addSpotThunk(payload));
+    } else {
+      let newSpot = await dispatch(addSpotThunk(payload));
 
-    if (newSpot) {
-      console.log("NAVIGATING TO NEW SPOT");
-      navigate(`/spots/${newSpot.id}`);
+      if (newSpot) {
+        console.log("NAVIGATING TO NEW SPOT");
+        navigate(`/spots/${newSpot.id}`);
+      }
     }
-  }
     setCountry("");
     setAddress("");
     setCity("");

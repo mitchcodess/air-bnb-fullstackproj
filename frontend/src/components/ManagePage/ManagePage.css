@@ -1,30 +1,28 @@
 .manage-button {
-    align-self: center;
-    justify-self: center;
-    width: 200px;
-    height: 90px;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    background-color: rgb(194, 191, 191);
-    cursor: pointer;
-    border-radius: .6rem;
-    box-shadow: var(--standard-box-shadow);
+  align-self: center;
+  justify-self: center;
+  width: 200px;
+  height: 90px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  background-color: rgb(194, 191, 191);
+  cursor: pointer;
+  border-radius: 0.6rem;
+  box-shadow: var(--standard-box-shadow);
 }
 
 .manage-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    row-gap: 100px;
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 1fr, 1fr, 1fr;
-
+  max-width: 1000px;
+  margin: 0 auto;
+  row-gap: 100px;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 1fr, 1fr, 1fr;
 }
 
-
 .manage-item {
-    max-width: 33%;
-    max-height: 33%;
+  max-width: 33%;
+  max-height: 33%;
 }

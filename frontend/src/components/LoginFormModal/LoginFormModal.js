@@ -31,7 +31,7 @@ function LoginFormModal() {
         <form onSubmit={handleSubmit} className="login-form__container">
           <label>
             <input
-            className="login-modal-input"
+              className="login-modal-input"
               type="text"
               placeholder="Username or Email"
               value={credential}
@@ -41,7 +41,7 @@ function LoginFormModal() {
           </label>
           <label>
             <input
-             className="login-modal-input"
+              className="login-modal-input"
               placeholder="Password"
               type="password"
               value={password}
