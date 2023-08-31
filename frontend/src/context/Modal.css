@@ -30,7 +30,7 @@
     border-radius: .5rem;
     transform: translate(0, 100%);
     opacity: 0;
-    animation: slideBelow 400ms ease-in 100ms forwards;
+    animation: slideBelow 400ms ease-in forwards;
   }
 
   @keyframes slideBelow{

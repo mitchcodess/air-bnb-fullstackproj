@@ -30,3 +30,18 @@
     display: flex;
     justify-content: center;
 }
+
+.submit-haven-button {
+    padding: 15px 15px;
+    text-decoration: none;
+    border-radius: .5rem;
+    background-color: #ffff;
+    border-style: none;
+    cursor: pointer;
+    font-weight: 700;
+    justify-self: end;
+}
+
+.submit-haven-button:hover {
+    background-color: #e8e5e5;
+}

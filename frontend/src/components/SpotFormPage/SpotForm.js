@@ -16,6 +16,7 @@ function SpotForm({id, currentCountry,  currentCity, currentAddress, currentStat
   const [price, setPrice] = useState("");
   const [images, setImages] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
+  
 
 useEffect(() => {
   if(formType === 'update') {

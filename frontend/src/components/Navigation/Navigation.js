@@ -17,9 +17,9 @@ function Navigation({ isLoaded }){
       </li>
       {isLoaded && (
         <>
-       {sessionUser && <NavLink exact to ='/spots/new'> 
+       {sessionUser && <NavLink exact to ='/spots/new' ><button className='submit-haven-button'> 
           Submit your Haven
-        </NavLink>}
+    </button></NavLink>}
         <li>
           <ProfileButton user={sessionUser} />
         </li>

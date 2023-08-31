@@ -17,8 +17,8 @@
 
 .login-modal__title {
     margin: 15px 15px;
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1.9rem;
+    font-weight: 300;
 }
 
 .login-form__container {
@@ -49,7 +49,7 @@
 
 
 .login-modal-input {
-    width: 150%;
+    width: 100%;
     padding: 8px 20px;
     margin: 0 auto;
     border-radius: .75rem;

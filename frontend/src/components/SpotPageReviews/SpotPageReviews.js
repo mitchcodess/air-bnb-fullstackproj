@@ -20,10 +20,17 @@ function SpotPageReviews({reviews, reviewCount, avgRating, }) {
         </div>
         {reviews.map(review => {
           return (
-            <SpotPageReviewCard review={review.review} date={review.createdAt} stars={review.stars} username={review.User.username}images={review.ReviewImages}/>
+            <SpotPageReviewCard 
+            id={review.id}
+            review={review.review} 
+            date={review.createdAt} 
+            stars={review.stars} 
+            username={review.User.username} 
+            images={review.ReviewImages}
+            reviewUserId={review.userId}
+            />
           )
         })}
-    
     </div>
     </>
   )

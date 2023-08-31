@@ -17,5 +17,14 @@
     max-width: 1000px;
     margin: 0 auto;
     row-gap: 100px;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 1fr, 1fr, 1fr;
+
 }
 
+
+.manage-item {
+    max-width: 33%;
+    max-height: 33%;
+}
