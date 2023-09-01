@@ -4,6 +4,7 @@ export const LOAD_SPOTS = "spots/LOAD_SPOTS";
 export const ADD_SPOT = "spots/ADD_SPOT";
 export const LOAD_SPOT = "spot/LOAD_SPOT";
 export const UPDATE_SPOT = "spot/UPDATE_SPOT";
+export const CREATE_SPOT_IMAGE = "spot/CREATE_SPOT_IMAGE"
 
 export const loadSpots = (spots) => {
   return {
@@ -36,6 +37,7 @@ export const addSpotThunk = (spot) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(spot),
   });
+
 
   console.log(response);
 

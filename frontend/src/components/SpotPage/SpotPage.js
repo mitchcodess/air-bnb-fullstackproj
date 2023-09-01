@@ -15,7 +15,7 @@ const Spot = () => {
   const spot = useSelector((state) => state.spot);
   const reviewsObj = useSelector((state) => state.review);
   const reviews = Object.values(reviewsObj);
-
+console.log('THIS IS THE REVIEWs',reviewsObj )
   useEffect(() => {
     dispatch(getReviewsThunk(spotId));
     dispatch(getSpotThunk(spotId));
@@ -26,7 +26,6 @@ const Spot = () => {
   }, [dispatch, spotId]);
 
   if (!spot.SpotImages) return null;
-  // if(!reviews.length) return null;
   return (
     <div className="spot-page__container">
       <h1>{spot.name}</h1>
@@ -42,6 +41,8 @@ const Spot = () => {
         reviewCount={spot.numReviews}
         avgRating={spot.avgStarRating}
         reviews={reviews}
+        id={spot.id}
+        ownerId = {spot.Owner.id}
       />
     </div>
   );

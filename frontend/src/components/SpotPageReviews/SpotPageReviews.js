@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReviewsStars from "../UI/ReviewsStars";
-
+import { useSelector } from "react-redux";
 import SpotPageReviewCard from "../SpotPageReviewCard/SpotPageReviewCard";
-function SpotPageReviews({ reviews, reviewCount, avgRating }) {
-  console.log(reviews);
-  const firstReview = () => {
-    if (reviewCount === 0) {
-      return (
-        <>
-          <p></p>
-        </>
-      );
-    }
-  };
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import CreateReviewModal from "../CreateReviewModal/CreateReviewModal";
+function SpotPageReviews({ reviews, reviewCount, avgRating, id, ownerId }) {
+  const sessionUser = useSelector((state) => state.session.user);
+  const canReview = sessionUser
+    ? reviews.find((review) => {
+        return review.userId === sessionUser.id;
+      })
+      ? false
+      : true
+    : false;
+
+   const isNotOwner = sessionUser ? ownerId === sessionUser.id ? false : true : false
+
   return (
     <>
       <div className="spot-page-reviews">
@@ -20,6 +23,12 @@ function SpotPageReviews({ reviews, reviewCount, avgRating }) {
           <ReviewsStars avgRating={avgRating} />
           <p>{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`}</p>
         </div>
+        {canReview && isNotOwner &&(
+          <OpenModalButton
+            modalComponent={<CreateReviewModal />}
+            buttonText={"Post a Review"}
+          />
+        )}
         {reviews.map((review) => {
           return (
             <SpotPageReviewCard

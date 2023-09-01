@@ -12,11 +12,8 @@ function DeleteModal({
   onConfirm,
   callBack,
 }) {
-  console.log(onConfirm);
-  console.log(callBack);
-
   function handleConfirm() {
-    onConfirm();
+    onConfirm(id);
     callBack();
   }
 

@@ -10,7 +10,6 @@ import video from "../../assets/video/main.mp4";
 export default function LandingPage() {
   const spotsObj = useSelector((state) => state.allSpots.allSpots);
   const spots = Object.values(spotsObj);
-  console.log(spots);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSpotsThunk());

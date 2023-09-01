@@ -1,14 +1,23 @@
 import { csrfFetch } from "./csrf";
-
+import { getSpotThunk } from "./spot";
 export const LOAD_REVIEWS = "review/LOAD_REVIEWS";
 export const DELETE_REVIEW = "review/DELETE_REVIEW";
+export const CREATE_REVIEW = "review/CREATE_REVIEW";
 export const EDIT_REVIEW = "review/EDIT_REVIEW";
+
 export const CLEAR_REVIEWS = "review/CLEAR_REVIEWS";
 
 export const loadReviews = (reviews) => {
   return {
     type: LOAD_REVIEWS,
     reviews,
+  };
+};
+
+export const createReview = (review) => {
+  return {
+    type: CREATE_REVIEW,
+    review,
   };
 };
 
@@ -44,6 +53,38 @@ export const getReviewsThunk = (id) => async (dispatch) => {
   }
 };
 
+export const createReviewThunk = (spotId, review) => async (dispatch) => {
+  console.log(spotId);
+  const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(review),
+  
+  });
+  const response2 = await csrfFetch(`/api/spots/${spotId}/reviews`);
+
+  if (response.ok) {
+    dispatch(loadReviews(await response2.json()))
+    dispatch(getSpotThunk(spotId));
+    return review;
+  }
+};
+
+export const deleteReviewThunk = (id, spotId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${id}`, {
+    method: "DELETE",
+  });
+  console.log(spotId);
+
+  if (response.ok) {
+    console.log("DELETING REVIEW");
+    dispatch(deleteReview(id));
+  
+    let message = await response.json();
+    return message;
+  }
+};
+
 const initialState = {};
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,9 +94,14 @@ const reviewReducer = (state = initialState, action) => {
         normalizedReviews[review.id] = review;
       });
       console.log(normalizedReviews);
-
       return { ...state, ...normalizedReviews };
-
+    case CREATE_REVIEW:
+      const newCreateState = { ...state, [action.review.id]: action.review };
+      return newCreateState;
+    case DELETE_REVIEW:
+      const newState = { ...state };
+      delete newState[action.id];
+      return newState;
     case CLEAR_REVIEWS:
       return initialState;
 

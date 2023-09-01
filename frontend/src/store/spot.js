@@ -17,6 +17,7 @@ export const clearSpot = (spot) => {
 };
 
 export const getSpotThunk = (id) => async (dispatch) => {
+  console.log(id);
   const response = await fetch("/api/spots/" + id);
 
   if (response.ok) {
@@ -42,3 +43,5 @@ const spotReducer = (state = initialState, action) => {
 };
 
 export default spotReducer;
+
+//npx dotenv sequelize-cli db:migrate && npx dotenv sequelize-cli db:seed:all && npm start

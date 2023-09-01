@@ -10,12 +10,12 @@ import UpdateButton from "../UI/UpdateButton";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { useModal } from "../../context/Modal";
-
+import { deleteUserSpotThunk } from "../../store/user";
 function ManagePage() {
-  const spots = useSelector((state) => state.user);
-  const userSpots = Object.values(spots);
   const { closeModal } = useModal();
   const dispatch = useDispatch();
+  const spots = useSelector((state) => state.user);
+  const userSpots = Object.values(spots);
   const manage = true;
   useEffect(() => {
     dispatch(getUserSpotsThunk());
@@ -23,7 +23,9 @@ function ManagePage() {
 
   if (!userSpots) return null;
 
-  const onConfirm = () => {};
+  const onConfirm = async (id) => {
+    await dispatch(deleteUserSpotThunk(id));
+  };
 
   return (
     <>
