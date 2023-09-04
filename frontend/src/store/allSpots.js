@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { getSpotThunk } from "./spot";
 
 export const LOAD_SPOTS = "spots/LOAD_SPOTS";
 export const ADD_SPOT = "spots/ADD_SPOT";
@@ -31,15 +32,14 @@ export const getSpotsThunk = () => async (dispatch) => {
   }
 };
 
+
+
 export const addSpotThunk = (spot) => async (dispatch) => {
   const response = await csrfFetch("/api/spots", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(spot),
   });
-
-
-  console.log(response);
 
   if (response.ok) {
     const spot = await response.json();
@@ -51,6 +51,21 @@ export const addSpotThunk = (spot) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const addSpotImageThunk = (spotId, payload) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+  method: 'POST',
+  headers: {'Content-Type':'application/json'},
+  body: JSON.stringify(payload)
+  })
+
+  if(response.ok) {
+    const image = await response.json() 
+    console.log('NEW IMAGE ADDED', image)
+    dispatch(getSpotThunk(spotId))
+    return image;
+  }
+}
 
 export const updateSpotThunk = (newSpot, id) => async (dispatch) => {
   const response = await csrfFetch("/api/spots/" + id, {

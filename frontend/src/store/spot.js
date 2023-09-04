@@ -1,6 +1,7 @@
 export const LOAD_SPOT = "spot/LOAD_SPOT";
 export const UPDATE_SPOT = "spot/UPDATE_SPOT";
 export const CLEAR_SPOT = "spot/CLEAR_SPOT";
+export const ADD_SPOT_IMAGE = "spot/ADD_SPOT_IMAGE"
 
 export const loadSpot = (spot) => {
   return {
@@ -16,6 +17,13 @@ export const clearSpot = (spot) => {
   };
 };
 
+export const addSpotImage = (image) => {
+  return {
+    type: ADD_SPOT_IMAGE,
+    image
+  }
+}
+
 export const getSpotThunk = (id) => async (dispatch) => {
   console.log(id);
   const response = await fetch("/api/spots/" + id);
@@ -27,6 +35,8 @@ export const getSpotThunk = (id) => async (dispatch) => {
     return spot;
   }
 };
+
+
 
 const initialState = {};
 
