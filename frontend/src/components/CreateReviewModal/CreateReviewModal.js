@@ -17,6 +17,7 @@ function CreateReviewModal() {
   const [isDisabled, setIsDisabled] = useState(true);
 
 useEffect(()=> {
+  //FIX
   let errors = {}
   if(review.length < 10) errors['review']='Please type more than 10 characters'
   if(stars === 0) errors['stars']='Please enter a star rating'
@@ -24,9 +25,11 @@ useEffect(()=> {
   if(review.length > 10) {
     setIsDisabled(false)
   }
-  if(stars !== 0) {
+  if(stars !== 0 && review.length) {
     setIsDisabled(false)
   }
+
+
 }, [errors, review, stars])
 
   const handleSubmit = async (e) => {

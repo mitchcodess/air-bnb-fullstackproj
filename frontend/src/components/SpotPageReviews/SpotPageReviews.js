@@ -20,13 +20,14 @@ function SpotPageReviews({ reviews, reviewCount, avgRating, id, ownerId }) {
       ? false
       : true
     : false;
-
+console.log(reviews)
   return (
     <>
       <div className="spot-page-reviews">
         <div className="review-star-number__container">
           <ReviewsStars avgRating={avgRating} />
-          <p>{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`}</p>
+          <span>·</span>
+         {reviewCount ? <p>{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`}</p> : ''}
         </div>
         {canReview && isNotOwner && (
           <OpenModalButton
@@ -35,6 +36,7 @@ function SpotPageReviews({ reviews, reviewCount, avgRating, id, ownerId }) {
           />
         )}
         {reviews.map((review) => {
+          
           return (
             <SpotPageReviewCard
               id={review.id}

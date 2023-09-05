@@ -280,9 +280,13 @@ router.get("/:spotId/reviews", async (req, res, next) => {
   }
 
   const reviews = await Review.findAll({
+    // order:[id, 'DESC'],
     where: {
+  
       spotId: req.params.spotId,
+  
     },
+   
     include: [
       {
         model: User,
@@ -294,7 +298,7 @@ router.get("/:spotId/reviews", async (req, res, next) => {
   });
 
   res.json({
-    Reviews: reviews,
+    Reviews: reviews.reverse(),
   });
 });
 

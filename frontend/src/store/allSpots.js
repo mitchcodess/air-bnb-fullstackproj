@@ -7,6 +7,7 @@ export const LOAD_SPOT = "spot/LOAD_SPOT";
 export const UPDATE_SPOT = "spot/UPDATE_SPOT";
 export const CREATE_SPOT_IMAGE = "spot/CREATE_SPOT_IMAGE"
 
+
 export const loadSpots = (spots) => {
   return {
     type: LOAD_SPOTS,

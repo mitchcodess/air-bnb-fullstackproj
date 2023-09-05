@@ -6,7 +6,12 @@ import "./SpotCard.css";
 import ReviewsStars from "../UI/ReviewsStars";
 const VenueSpotCard = ({ id, name, price, city, state, rating, src }) => {
   return (
+    <>
+
     <div className="spot-card">
+    <div class="tooltip">
+  <span class="tooltiptext">{name}</span>
+    </div>  
       <NavLink to={`/spots/${id}`} className="spot-card-link">
         <div className="spot-card-img">{<img src={src} alt="spot" />}</div>
         <div className="spot-card-description">
@@ -18,6 +23,7 @@ const VenueSpotCard = ({ id, name, price, city, state, rating, src }) => {
         </div>
       </NavLink>
     </div>
+    </>
   );
 };
 

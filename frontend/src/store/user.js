@@ -2,6 +2,15 @@ import { csrfFetch } from "./csrf";
 
 export const LOAD_USER_SPOTS = "user/LOAD_USER";
 export const DELETE_USER_SPOT = "user/DELETE_SPOT";
+export const CLEAR_SPOTS = "user/CLEAR_SPOTS"
+
+export const clearSpots = (spots) => {
+  return {
+    type: CLEAR_SPOTS,
+    spots
+  }
+}
+
 
 export const loadUserSpots = (userSpots) => {
   return {
@@ -57,7 +66,8 @@ const userReducer = (state = initialState, action) => {
 
       delete newState[action.id];
       return newState;
-
+  case CLEAR_SPOTS:
+  return initialState;
     default:
       return state;
   }

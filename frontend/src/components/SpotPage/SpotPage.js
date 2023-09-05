@@ -14,8 +14,8 @@ const Spot = () => {
   const dispatch = useDispatch();
   const spot = useSelector((state) => state.spot);
   const reviewsObj = useSelector((state) => state.review);
-  const reviews = Object.values(reviewsObj);
-console.log('THIS IS THE REVIEWs',reviewsObj )
+  const reviews = Object.values(reviewsObj).reverse();
+  console.log("THIS IS THE REVIEWs", reviewsObj);
   useEffect(() => {
     dispatch(getReviewsThunk(spotId));
     dispatch(getSpotThunk(spotId));
@@ -43,7 +43,7 @@ console.log('THIS IS THE REVIEWs',reviewsObj )
         avgRating={spot.avgStarRating}
         reviews={reviews}
         id={spot.id}
-        ownerId = {spot.Owner.id}
+        ownerId={spot.Owner.id}
       />
     </div>
   );

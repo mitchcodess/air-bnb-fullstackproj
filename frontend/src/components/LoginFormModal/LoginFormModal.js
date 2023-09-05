@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import "./LoginFormModal.css";
 
@@ -10,6 +11,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +25,17 @@ function LoginFormModal() {
         }
       });
   };
+
+
+  useEffect(()=> { 
+    if(credential.length > 4) {
+      setIsDisabled(false)
+    }
+    if(password.length > 6) {
+      setIsDisabled(false)
+    }
+  }, [credential, password])
+  
 
   const setDemoUser = () => {
     setCredential('DemoUser')
@@ -53,7 +66,7 @@ function LoginFormModal() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          <button className="login-modal__login-button" type="submit">
+          <button disabled={isDisabled} className="login-modal__login-button" type="submit">
             Login
           </button>
           <button className="login-modal__login-button" type="submit" onClick={(e) => {

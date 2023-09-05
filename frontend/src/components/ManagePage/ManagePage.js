@@ -10,6 +10,8 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 import { useModal } from "../../context/Modal";
 import { deleteUserSpotThunk } from "../../store/user";
 import { NavLink } from "react-router-dom";
+import { clearSpots } from "../../store/user";
+
 function ManagePage() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -18,7 +20,8 @@ function ManagePage() {
   const manage = true;
   useEffect(() => {
     dispatch(getUserSpotsThunk());
-  }, [dispatch]);
+    return () => dispatch(clearSpots())
+  }, [dispatch, ]);
 
   if (!userSpots) return null;
 
