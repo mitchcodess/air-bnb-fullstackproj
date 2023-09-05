@@ -18,7 +18,11 @@ display: flex;
   display: block;
 }
 .create-form__container input {
-  width: 60%;
+  width: 80%;
+  padding: 10px 20px;
+  margin: 0 auto;
+  border-style: solid;
+  border-color: #d0cfcf;
 }
 
 .create-form__container textarea {
@@ -28,7 +32,27 @@ display: flex;
 
 }
 
+.create-form__container button {
+  width: 75%;
+  margin: 0 auto;
+  padding: 12px 20px;
+  border-radius: var(--button-border-radius);
+  border: none;
+  background-color: var(--button-color);
+  box-shadow: var(--standard-box-shadow);
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
 .city-state__container {
   display: flex;
   gap: 5rem;
+}
+
+
+.city-state__container input {
+  width: 175px
 }

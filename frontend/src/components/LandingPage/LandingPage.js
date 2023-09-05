@@ -19,9 +19,9 @@ export default function LandingPage() {
 
   return (
     <>
-      <div className="main">
+      {/* <div className="main">
         <video className="main-video" src={video} autoPlay loop muted></video>
-      </div>
+      </div> */}
       <div className="spots-container">
         {spots.map((spot) => {
           return (

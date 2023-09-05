@@ -1,0 +1,14 @@
+.update-button {
+        width: 50%;
+        margin: 0 auto;
+        border-radius: var(--button-border-radius);
+        border: none;
+        background-color: var(--button-color);
+        box-shadow: var(--standard-box-shadow);
+        color: white;
+        font-weight: 300;
+        font-size: 12px;
+        cursor: pointer;
+        align-self: center;
+        margin-right: 5px;
+}

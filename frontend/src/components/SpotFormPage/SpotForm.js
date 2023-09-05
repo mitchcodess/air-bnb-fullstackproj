@@ -42,7 +42,7 @@ function SpotForm({
       errors.address="Address is required"
     }
     if(!city) {
-      errors.city="Country is required"
+      errors.city="City is required"
     }
     if(!state) {
       errors.state="State is required"
@@ -178,7 +178,7 @@ function SpotForm({
   return (
     <>
       <div className="create-form__container">
-        <h2>Submit your property as a Haven!</h2>
+        {/* <h2>Submit your property as a Haven!</h2> */}
         <form onSubmit={handleSubmit} className="create-spot-form__container">
           <div>
             <label htmlFor="country">Country</label>
@@ -190,7 +190,7 @@ function SpotForm({
               placeholder="Country"
             />
           </div>
-          <div>{errors.country}</div>
+          <div className="error-text">{errors.country}</div>
           <div>
             <label htmlFor="street-address">Street Address</label>
             <input
@@ -201,7 +201,7 @@ function SpotForm({
               placeholder="Address"
             />
           </div>
-          <div>{errors.address}</div>
+          <div className="error-text">{errors.address}</div>
           <div className="city-state__container">
           <div>
             <label htmlFor="city">City</label>
@@ -213,7 +213,7 @@ function SpotForm({
               placeholder="City"
             />
           </div>
-          <div>{errors.city}</div>
+          <div className="error-text">{errors.city}</div>
           <div>
             <label htmlFor="state">State</label>
             <input
@@ -224,10 +224,10 @@ function SpotForm({
               placeholder="State"
             />
           </div>
-          <div>{errors.state}</div>
+          <div className="error-text">{errors.state}</div>
           </div>
           <div>
-            <label htmlFor="description">Describe your Venue</label>
+            <label htmlFor="description">Describe your Haven</label>
             <textarea
               id="description"
               type="text-area"
@@ -236,7 +236,7 @@ function SpotForm({
               placeholder="Please write atleast 30 characters"
             ></textarea>
           </div>
-          <div>{errors.description}</div>
+          <div className="error-text">{errors.description}</div>
           <div>
             <label htmlFor="title">Name</label>
             <input
@@ -247,9 +247,9 @@ function SpotForm({
               placeholder="Title"
             />
           </div>
-          <div>{errors.name}</div>
+          <div className="error-text">{errors.name}</div>
           <div>
-            <label htmlFor="price">Rate per Night</label>
+            <label htmlFor="price">Rate per night</label>
             <input
               id="price"
               type="number"
@@ -258,7 +258,7 @@ function SpotForm({
               placeholder="Rate"
             />
           </div>
-          <div>{errors.price}</div>
+          <div className="error-text">{errors.price}</div>
           {formType!=="update" ? (<>
           <div>
           <label htmlFor='image-link'>Preview Image Url</label>
@@ -269,7 +269,7 @@ function SpotForm({
             onChange={e => setPreviewImage(e.target.value)}
           />
         </div>
-        <div>{errors.previewImage}</div>
+        <div className="error-text">{errors.previewImage}</div>
         <div>
           <label htmlFor='image-link'></label>
           <input
@@ -288,7 +288,6 @@ function SpotForm({
             onChange={e => setImage3(e.target.value)}
           />
         </div>
-  
         <div>
           <label htmlFor='image-link'></label>
           <input
