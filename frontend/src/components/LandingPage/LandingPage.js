@@ -29,6 +29,8 @@ export default function LandingPage() {
               key={spot.id}
               id={spot.id}
               name={spot.name}
+              city={spot.city}
+              state={spot.state}
               price={spot.price}
               description={spot.description}
               rating={spot.avgRating}

@@ -24,12 +24,19 @@ function LoginFormModal() {
       });
   };
 
+  const setDemoUser = () => {
+    setCredential('DemoUser')
+    setPassword('password')
+
+  }
+
   return (
     <>
       <div className="login-modal__container">
         <h1 className="login-modal__title">Welcome to Haven</h1>
+        {errors.credential && <p className="error-text">{errors.credential}</p>}
         <form onSubmit={handleSubmit} className="login-form__container">
-          <label>
+    
             <input
               className="login-modal-input"
               type="text"
@@ -38,8 +45,6 @@ function LoginFormModal() {
               onChange={(e) => setCredential(e.target.value)}
               required
             />
-          </label>
-          <label>
             <input
               className="login-modal-input"
               placeholder="Password"
@@ -48,12 +53,12 @@ function LoginFormModal() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </label>
-          {errors.credential && <p>{errors.credential}</p>}
           <button className="login-modal__login-button" type="submit">
             Login
           </button>
-          <button className="login-modal__login-button" type="submit">
+          <button className="login-modal__login-button" type="submit" onClick={(e) => {
+            setDemoUser()
+          }}>
             Demo-User
           </button>
         </form>

@@ -8,6 +8,7 @@
   border: none;
   transition: var(--default-hover-transition);
   box-shadow: var(--standard-box-shadow);
+  cursor: pointer;
 }
 
 .profile-button:hover {
@@ -22,12 +23,10 @@
 .profile-dropdown {
   background-color: rgb(255, 255, 255);
   width: 200px;
-  min-height: 250px;
-  max-height: 300px;
   position: absolute;
   margin-top: 11px;
   border-radius: 0.5em;
-  padding: 1rem 1rem;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -48,7 +48,7 @@ export const addSpotThunk = (spot) => async (dispatch) => {
     return spot;
   } else {
     const error = await response.json();
-    console.log(error);
+    return error
   }
 };
 

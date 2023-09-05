@@ -9,3 +9,8 @@
 .spot-page-booking-card__container li {
   list-style: none;
 }
+
+
+.price {
+  font-size: 24px;
+}

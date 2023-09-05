@@ -23,14 +23,14 @@ function DeleteModal({
 
   return (
     <>
-      <div className="login-modal__container">
+      <div className="delete-modal__container">
         <h1>{title}</h1>
         <p>{message}</p>
         <div>
-          <button onClick={handleConfirm}>{confirmMessage}</button>
+          <button className='confirm-button'onClick={handleConfirm}>{confirmMessage}</button>
         </div>
         <div>
-          <button onClick={handleCancel}>{cancelMessage}</button>
+          <button className='delete-button'onClick={handleCancel}>{cancelMessage}</button>
         </div>
       </div>
     </>

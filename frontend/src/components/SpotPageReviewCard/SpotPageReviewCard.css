@@ -1,3 +1,14 @@
 .review-card__container ul {
   list-style: none;
 }
+
+.review-card__container li:first-child {
+  font-weight: 800;
+}
+
+
+.review-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}

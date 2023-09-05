@@ -7,7 +7,8 @@
   --standard-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
   --transition-box-shadow: 0 5px 9px rgba(0, 0, 0, 0.19);
   --default-gap: 1.2rem;
-  --heading-text-font-size: 1.7rem;
+  --button-border-radius: .5em;
+  --button-color: rgb(69, 69, 237);
   --default-hover-transition: all 0.3s ease-in-out;
 }
 
@@ -16,4 +17,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.error-text {
+  color: rgb(224, 50, 50);
 }

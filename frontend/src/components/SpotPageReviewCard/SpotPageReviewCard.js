@@ -16,7 +16,7 @@ function SpotPageReviewCard({
   stars,
   images,
   reviewUserId,
-  username,
+ firstName
 }) {
   const { spotId } = useParams();
   const { closeModal } = useModal();
@@ -38,7 +38,7 @@ function SpotPageReviewCard({
     <>
       <div className="review-card__container">
         <ul className="review-card-list">
-          <li>{username}</li>
+          <li>{firstName}</li>
           <li>{dateString2}</li>
           <li>{review}</li>
           {sessionUser

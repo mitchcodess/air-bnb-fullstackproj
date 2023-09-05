@@ -52,11 +52,8 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <li>{user.username}</li>
-            <li>
-              {user.firstName} {user.lastName}
-            </li>
             <li>{user.email}</li>
-            <NavLink to="/spots/current">Manage Venues</NavLink>
+            <NavLink to="/spots/current">Manage Havens</NavLink>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>

@@ -1,3 +1,49 @@
 .review-star__container {
   display: flex;
+
 }
+
+.review-modal__container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 70px;
+  align-items: center;
+}
+
+.review-modal__container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.review-modal__container i {
+ font-size: 24px;
+color: rgb(73, 73, 239)
+}
+
+
+.review-modal__container form textarea {
+  width: 350px;
+  height: 200px;
+  padding: 10px 10px;
+  resize: none;
+} 
+
+.review-modal__container button {
+  width: 75%;
+  margin: 0 auto;
+  padding: 20px 0px;
+  border-radius: var(--button-border-radius);
+  border: none;
+  background-color: var(--button-color);
+  box-shadow: var(--standard-box-shadow);
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  align-self: center;
+} 
+
+

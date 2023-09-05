@@ -1,14 +1,17 @@
 .spots-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-column-gap: 6px;
+  grid-row-gap:6px;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   height: calc(100vh - 10px);
   background-color: rgb(255, 255, 255);
   column-gap: 2rem;
   row-gap: 2.5rem;
-
+  width: 90%;
+  min-width: 500px;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
 .landing-logo {

@@ -30,10 +30,40 @@ function SpotForm({
   const [image3, setImage3] = useState('')
   const [image4, setImage4] = useState('')
   const [image5, setImage5] = useState('')
-  const [error, setErrors] = useState({})
+  const [errors, setErrors] = useState({})
 
 
-  const [validationErrors, setValidationErrors] = useState({});
+  const validateData = () => {
+    let errors = {};
+    if(!country) {
+      errors.country="Country is required"
+    }
+    if(!address) {
+      errors.address="Address is required"
+    }
+    if(!city) {
+      errors.city="Country is required"
+    }
+    if(!state) {
+      errors.state="State is required"
+    }
+    if(description.length < 30) {
+      errors.description = 'Description needs minimum 30 characters'
+    }
+    if(!name) {
+      errors.name="Name is required"
+    }
+    if(!price) {
+      errors.price="Price is required"
+    }
+    if(formType!=='update' && !previewImage) {
+      errors.previewImage="A Preview image is required"
+    }
+    return errors
+  }
+  
+
+
 
   useEffect(() => {
     if (formType === "update") {
@@ -56,10 +86,17 @@ function SpotForm({
     currentPrice,
   ]);
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = validateData()
+    if(Object.keys(errors).length) {
+      setErrors(errors)
+      return
+    }
+    setErrors({})
 
- 
     const payload = {
       country,
       address,
@@ -81,7 +118,6 @@ function SpotForm({
     } else {
       let newSpot = await dispatch(addSpotThunk(payload));
       if (newSpot) {
-      
           const previewPayload = {
             url: previewImage,
             preview: true
@@ -143,7 +179,7 @@ function SpotForm({
     <>
       <div className="create-form__container">
         <h2>Submit your property as a Haven!</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="create-spot-form__container">
           <div>
             <label htmlFor="country">Country</label>
             <input
@@ -154,6 +190,7 @@ function SpotForm({
               placeholder="Country"
             />
           </div>
+          <div>{errors.country}</div>
           <div>
             <label htmlFor="street-address">Street Address</label>
             <input
@@ -164,6 +201,8 @@ function SpotForm({
               placeholder="Address"
             />
           </div>
+          <div>{errors.address}</div>
+          <div className="city-state__container">
           <div>
             <label htmlFor="city">City</label>
             <input
@@ -174,6 +213,7 @@ function SpotForm({
               placeholder="City"
             />
           </div>
+          <div>{errors.city}</div>
           <div>
             <label htmlFor="state">State</label>
             <input
@@ -183,6 +223,8 @@ function SpotForm({
               value={state}
               placeholder="State"
             />
+          </div>
+          <div>{errors.state}</div>
           </div>
           <div>
             <label htmlFor="description">Describe your Venue</label>
@@ -194,6 +236,7 @@ function SpotForm({
               placeholder="Please write atleast 30 characters"
             ></textarea>
           </div>
+          <div>{errors.description}</div>
           <div>
             <label htmlFor="title">Name</label>
             <input
@@ -204,6 +247,7 @@ function SpotForm({
               placeholder="Title"
             />
           </div>
+          <div>{errors.name}</div>
           <div>
             <label htmlFor="price">Rate per Night</label>
             <input
@@ -214,6 +258,8 @@ function SpotForm({
               placeholder="Rate"
             />
           </div>
+          <div>{errors.price}</div>
+          {formType!=="update" ? (<>
           <div>
           <label htmlFor='image-link'>Preview Image Url</label>
           <input
@@ -223,6 +269,7 @@ function SpotForm({
             onChange={e => setPreviewImage(e.target.value)}
           />
         </div>
+        <div>{errors.previewImage}</div>
         <div>
           <label htmlFor='image-link'></label>
           <input
@@ -241,6 +288,7 @@ function SpotForm({
             onChange={e => setImage3(e.target.value)}
           />
         </div>
+  
         <div>
           <label htmlFor='image-link'></label>
           <input
@@ -259,6 +307,9 @@ function SpotForm({
             onChange={e => setImage5(e.target.value)}
           />
         </div>
+        </>
+          ) : ''}
+
           <div className="create-venue-submit__container"></div>
           <button type="submit">Submit</button>
         </form>

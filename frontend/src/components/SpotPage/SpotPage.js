@@ -36,6 +36,7 @@ console.log('THIS IS THE REVIEWs',reviewsObj )
         description={spot.description}
         reviewCount={spot.numReviews}
         avgRating={spot.avgStarRating}
+        price={spot.price}
       />
       <SpotPageReviews
         reviewCount={spot.numReviews}

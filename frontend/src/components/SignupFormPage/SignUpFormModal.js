@@ -58,7 +58,7 @@ function SignUpFormModal() {
               required
             />
           </div>
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p className="error-text">{errors.email}</p>}
           <div className="input-container">
             <label>Username</label>
             <input
@@ -69,7 +69,7 @@ function SignUpFormModal() {
               required
             />
           </div>
-          {errors.username && <p>{errors.username}</p>}
+          {errors.username && <p className="error-text">{errors.username}</p>}
           <div className="input-container">
             <label>First Name</label>
             <input
@@ -80,7 +80,7 @@ function SignUpFormModal() {
               required
             />
           </div>
-          {errors.firstName && <p>{errors.firstName}</p>}
+          {errors.firstName && <p className="error-text">{errors.firstName}</p>}
           <div className="input-container">
             <label for="lastname">Last Name</label>
             <input
@@ -92,7 +92,7 @@ function SignUpFormModal() {
               required
             />
           </div>
-          {errors.lastName && <p>{errors.lastName}</p>}
+          {errors.lastName && <p className="error-text">{errors.lastName}</p>}
           <div className="input-container">
             <label for="password">Password</label>
             <input
@@ -104,7 +104,7 @@ function SignUpFormModal() {
               required
             />
           </div>
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && <p className="error-text">{errors.password}</p>}
           <div className="input-container">
             <label for="passwordConfirm">Confirm Password</label>
             <input

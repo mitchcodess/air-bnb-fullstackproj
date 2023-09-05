@@ -40,7 +40,9 @@ function ManagePage() {
                     key={spot.id}
                     id={spot.id}
                     name={spot.name}
+                    state={spot.state}
                     price={spot.price}
+                    city={spot.city}
                     description={spot.description}
                     rating={spot.avgRating}
                     src={spot.previewImage}

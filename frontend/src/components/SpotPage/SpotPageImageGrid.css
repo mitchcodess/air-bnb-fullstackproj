@@ -2,9 +2,11 @@
   display: flex;
   margin-top: 50px;
   width: 100%;
+  min-width: 600px;
   min-height: 700px;
   max-height: 700px;
   gap: 5px;
+  margin-bottom: 2rem;
 }
 
 .spot-page-image-main {

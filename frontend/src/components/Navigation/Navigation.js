@@ -19,16 +19,20 @@ function Navigation({ isLoaded }) {
         </li>
         {isLoaded && (
           <>
+          <div className="profile-submit-buttons__container">
             {sessionUser && (
+              <li>
               <NavLink exact to="/spots/new">
                 <button className="submit-haven-button">
-                  Submit your Haven
+                  Haven your home
                 </button>
               </NavLink>
+              </li>
             )}
             <li>
               <ProfileButton user={sessionUser} />
             </li>
+            </div>
           </>
         )}
       </div>
