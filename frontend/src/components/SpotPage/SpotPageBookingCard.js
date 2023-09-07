@@ -19,5 +19,6 @@ function SpotPageBookingCard({ avgRating, reviewCount, price}) {
     </div>
   );
 }
+//test
 
 export default SpotPageBookingCard;
