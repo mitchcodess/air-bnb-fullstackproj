@@ -2,9 +2,5 @@
   display: flex;
   align-items: center;
   gap: 0.2rem;
-}
-
-.review-star-number__container i {
-  font-size: 14px;
-
+  font-size: 18px;
 }

@@ -5,16 +5,19 @@
 }
 
 .spot-page-reviews button {
-    width: 200px;
-    padding: 10px 0px;
+    
+    padding: 8px 14px;
     border-radius: var(--button-border-radius);
     border: none;
     background-color: var(--button-color);
     box-shadow: var(--standard-box-shadow);
     color: white;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: 600;
+    font-size: 10px;
     letter-spacing: 2px;
     cursor: pointer;
     align-self: start;
+}
+.post-review-button {
+
 }

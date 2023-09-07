@@ -30,7 +30,7 @@ color: rgb(73, 73, 239)
   resize: none;
 } 
 
-.review-modal__container button {
+.review-submit-button {
   width: 75%;
   margin: 0 auto;
   padding: 20px 0px;
@@ -46,4 +46,8 @@ color: rgb(73, 73, 239)
   align-self: center;
 } 
 
+.review-submit-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
 

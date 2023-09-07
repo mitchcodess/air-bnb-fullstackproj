@@ -11,7 +11,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
-  const [isDisabled, setIsDisabled] = useState(true);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,36 +26,37 @@ function LoginFormModal() {
       });
   };
 
+  const handleCredential = (e) => {
+    setCredential(e.target.value) 
 
-  useEffect(()=> { 
-    if(credential.length > 4) {
-      setIsDisabled(false)
-    }
-    if(password.length > 6) {
-      setIsDisabled(false)
-    }
-  }, [credential, password])
+  }
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value)
+  }
+
   
+
+
 
   const setDemoUser = () => {
     setCredential('DemoUser')
     setPassword('password')
-
   }
 
   return (
     <>
       <div className="login-modal__container">
-        <h1 className="login-modal__title">Welcome to Haven</h1>
+        <h2 className="login-modal__title">Welcome to Haven</h2>
         {errors.credential && <p className="error-text">{errors.credential}</p>}
-        <form onSubmit={handleSubmit} className="login-form__container">
+        <form onSubmit={handleSubmit} className="login-form__container" novalidate>
     
             <input
               className="login-modal-input"
               type="text"
               placeholder="Username or Email"
               value={credential}
-              onChange={(e) => setCredential(e.target.value)}
+              onChange={(e) => handleCredential(e)}
               required
             />
             <input
@@ -63,10 +64,10 @@ function LoginFormModal() {
               placeholder="Password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handlePassword(e)}
               required
             />
-          <button disabled={isDisabled} className="login-modal__login-button" type="submit">
+          <button disabled={password.length < 6 || credential.length < 4} className="login-modal__login-button" type="submit">
             Login
           </button>
           <button className="login-modal__login-button" type="submit" onClick={(e) => {

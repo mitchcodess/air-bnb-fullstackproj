@@ -14,23 +14,15 @@ function CreateReviewModal() {
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(0);
   const [errors, setErrors] = useState({})
-  const [isDisabled, setIsDisabled] = useState(true);
 
-useEffect(()=> {
-  //FIX
-  let errors = {}
-  if(review.length < 10) errors['review']='Please type more than 10 characters'
-  if(stars === 0) errors['stars']='Please enter a star rating'
-  setErrors(errors)
-  if(review.length > 10) {
-    setIsDisabled(false)
-  }
-  if(stars !== 0 && review.length) {
-    setIsDisabled(false)
+
+  const handleReview = (e) => {
+    setReview(e.target.value)
   }
 
-
-}, [errors, review, stars])
+  const handleStars = (num) => {
+    setStars(num)
+  }
 
   const handleSubmit = async (e) => {
     const payload = {
@@ -54,31 +46,32 @@ useEffect(()=> {
           <textarea
             id="review-text"
             placeholder="Leave your review here..."
-            onChange={(e) => setReview(e.target.value)}
+            onChange={(e) => handleReview(e)}
           ></textarea>
           <div className="review-star__container">
             <i
               className={`fa-star ${stars >= 1 ? "fa-solid" : "fa-regular"} `}
-              onClick={(e) => setStars(1)}
+              onClick={() => handleStars(1)}
             ></i>
             <i
               className={`fa-star ${stars >= 2 ? "fa-solid" : "fa-regular"}`}
-              onClick={(e) => setStars(2)}
+              onClick={() => handleStars(2)}
             ></i>
             <i
               className={`fa-star ${stars >= 3 ? "fa-solid" : "fa-regular"}`}
-              onClick={(e) => setStars(3)}
+              onClick={() => handleStars(3)}
             ></i>
             <i
               className={`fa-star ${stars >= 4 ? "fa-solid" : "fa-regular"}`}
-              onClick={(e) => setStars(4)}
+              onClick={() => handleStars(4)}
             ></i>
             <i
               className={`fa-star ${stars === 5 ? "fa-solid" : "fa-regular"}`}
-              onClick={(e) => setStars(5)}
+              onClick={() => handleStars(5)}
             ></i>
+
           </div>
-          <button disabled={isDisabled} type="submit">Submit Review</button>
+          <button className='review-submit-button'disabled={!stars || review.length < 10} type="submit">Submit your Review</button>
         </form>
       </div>
     </>

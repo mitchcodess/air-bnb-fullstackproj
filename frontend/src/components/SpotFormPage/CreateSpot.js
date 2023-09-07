@@ -1,5 +1,5 @@
 import React from "react";
-import SpotForm from "./SpotForm";
+import SpotForm from "./CreateSpotForm";
 function CreateSpot() {
   return <SpotForm formType="create" />;
 }

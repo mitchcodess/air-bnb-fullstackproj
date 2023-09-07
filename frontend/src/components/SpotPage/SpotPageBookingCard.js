@@ -9,13 +9,12 @@ function SpotPageBookingCard({ avgRating, reviewCount, price}) {
         <div className="price">${price}/night</div>
         <div className="review-star-number__container">
           <ReviewsStars avgRating={avgRating} />
-          <span>·</span>
-          <p>{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`} </p>
+          {reviewCount ? <p>·{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`}</p> : ''}
         </div>
       </div>
    
-      <div>
-        <button onClick={() => alert('Feature coming soon')}>Reserve</button>
+      <div className="spot-page-reserve-container">
+        <button className="spot-page-reserve-button" onClick={() => alert('Feature coming soon')}>Reserve</button>
       </div>
     </div>
   );

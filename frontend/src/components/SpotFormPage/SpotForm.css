@@ -1,18 +1,24 @@
-.create-spot-form__container {
-display: flex;
-
+.create-form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
+.create-form__container h2 {
+  margin: 0 auto;
+  width: 500px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 .create-form__container form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 800px;
-  margin: 0 auto;
+  margin-left: 50px;
   width: 50%;
+  max-width: 1000px;
   gap: 2rem;
 }
-
 
 .create-form__container label {
   display: block;
@@ -29,12 +35,12 @@ display: flex;
   width: 80%;
   height: 300px;
   resize: none;
-
+  padding: 10px;
 }
 
 .create-form__container button {
   width: 75%;
-  margin: 0 auto;
+
   padding: 12px 20px;
   border-radius: var(--button-border-radius);
   border: none;
@@ -45,14 +51,22 @@ display: flex;
   font-size: 12px;
   letter-spacing: 2px;
   cursor: pointer;
+
 }
 
 .city-state__container {
   display: flex;
   gap: 5rem;
+  width: 80%;
+  justify-content: space-between;
 }
 
 
 .city-state__container input {
-  width: 175px
+  width: 260px
+}
+
+.sign-up-form-submit-button:disabled {
+background-color: grey;
+cursor: not-allowed;
 }

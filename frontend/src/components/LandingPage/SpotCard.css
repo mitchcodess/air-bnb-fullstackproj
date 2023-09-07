@@ -21,6 +21,19 @@
   min-width: 300px;
 }
 
+.spot-card::before
+ {
+  content: attr(data-tooltip);
+  display: inline-block;
+  visibility: hidden;
+}
+
+.spot-card:hover::before {
+  visibility: visible;
+  background-color: rgb(246, 246, 246);
+}
+
+
 .price-section{
   margin-top: 4px;
 }

@@ -14,13 +14,12 @@
 }
 
 .manage-title  {
-  margin-left: 200px;
-  margin-bottom: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .manage-title button {
-  display: inline-block;
-  width: 10%;
+  width: 20%;
   padding: 10px 10px;
   margin: 0 auto;
   border-radius: var(--button-border-radius);
@@ -49,14 +48,17 @@
   max-height: 33%;
 }
 
-
+.manage-item-button__container {
+  display: flex;
+  width: 100px;
+}
 .manage-update-button {
   border: 1px solid;
 }
 
 .manage-item button{
   display: inline-block;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   border-radius: var(--button-border-radius);
   border: none;
@@ -67,5 +69,5 @@
   font-size: 12px;
   cursor: pointer;
   align-self: center;
-  margin-right: 5px;
+
 }

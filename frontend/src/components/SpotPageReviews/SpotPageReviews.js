@@ -26,13 +26,16 @@ console.log(reviews)
       <div className="spot-page-reviews">
         <div className="review-star-number__container">
           <ReviewsStars avgRating={avgRating} />
-          <span>·</span>
-         {reviewCount ? <p>{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`}</p> : ''}
+         {reviewCount ? <p>·{`${reviewCount} ${reviewCount > 1 ? "reviews" : "review"}`}</p> : ''}
+        </div>
+        <div>
+          {!reviewCount ? <p>Be the first to post a review!</p> : ''}
         </div>
         {canReview && isNotOwner && (
           <OpenModalButton
+          className='post-review-button'
             modalComponent={<CreateReviewModal />}
-            buttonText={"Post a Review"}
+            buttonText={"Post your Review"}
           />
         )}
         {reviews.map((review) => {

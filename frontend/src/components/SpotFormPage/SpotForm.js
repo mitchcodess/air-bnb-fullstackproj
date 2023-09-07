@@ -57,7 +57,7 @@ function SpotForm({
       errors.price="Price is required"
     }
     if(formType!=='update' && !previewImage) {
-      errors.previewImage="A Preview image is required"
+      errors.previewImage="Preview image is required"
     }
     return errors
   }
@@ -178,10 +178,13 @@ function SpotForm({
   return (
     <>
       <div className="create-form__container">
-        {/* <h2>Submit your property as a Haven!</h2> */}
+        {formType !=='update' && <h2>Submit your property as a Haven!</h2> }
+        {formType ==='update' && <h2>Update your Haven</h2> }
         <form onSubmit={handleSubmit} className="create-spot-form__container">
           <div>
-            <label htmlFor="country">Country</label>
+          <h3>Where's your place located?</h3>
+         <p>Guests will only get your exact address once they booked a<br></br>reservation</p>
+            <label htmlFor="country">Country</label> 
             <input
               id="country"
               type="text"
@@ -189,9 +192,12 @@ function SpotForm({
               value={country}
               placeholder="Country"
             />
+               <div className="error-text">{errors.country}</div>
           </div>
-          <div className="error-text">{errors.country}</div>
+          
+         
           <div>
+
             <label htmlFor="street-address">Street Address</label>
             <input
               id="street-address"
@@ -200,8 +206,9 @@ function SpotForm({
               value={address}
               placeholder="Address"
             />
+            <div className="error-text">{errors.country}</div>
           </div>
-          <div className="error-text">{errors.address}</div>
+          
           <div className="city-state__container">
           <div>
             <label htmlFor="city">City</label>
@@ -212,8 +219,10 @@ function SpotForm({
               value={city}
               placeholder="City"
             />
+             <div className="error-text">{errors.city}</div>
           </div>
-          <div className="error-text">{errors.city}</div>
+        
+         
           <div>
             <label htmlFor="state">State</label>
             <input
@@ -223,11 +232,14 @@ function SpotForm({
               value={state}
               placeholder="State"
             />
+            <div className="error-text">{errors.state}</div>
           </div>
-          <div className="error-text">{errors.state}</div>
+      
           </div>
           <div>
-            <label htmlFor="description">Describe your Haven</label>
+          <h3>Describe your place to guests</h3>
+         
+            <label htmlFor="description">Mention the best features of your space, any special amentities like fast wifi or <br></br> parking, and what you love about the neighborhood</label>
             <textarea
               id="description"
               type="text-area"
@@ -235,41 +247,46 @@ function SpotForm({
               value={description}
               placeholder="Please write atleast 30 characters"
             ></textarea>
+            <div className="error-text">{errors.description}</div>
           </div>
-          <div className="error-text">{errors.description}</div>
+          <h3>Create a title for your spot</h3>
           <div>
-            <label htmlFor="title">Name</label>
+         
+            <label htmlFor="title">Catch guests' attention with a spot title that highlights what makes your place<br></br> special.</label>
             <input
               id="title"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Title"
+              placeholder="Name your spot"
             />
+             <div className="error-text">{errors.name}</div>
           </div>
-          <div className="error-text">{errors.name}</div>
+     
           <div>
-            <label htmlFor="price">Rate per night</label>
+            <h3>Set a base price for your spot</h3>
+
+            <label htmlFor="price">Competative pricing can help your listing stand out and rank higher<br></br> in search results.</label>
             <input
               id="price"
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="Rate"
+              placeholder="Price per night (USD)"
             />
+               <div className="error-text">{errors.price}</div>
           </div>
-          <div className="error-text">{errors.price}</div>
           {formType!=="update" ? (<>
           <div>
-          <label htmlFor='image-link'>Preview Image Url</label>
+          <label htmlFor='image-link'>Submit a link to at least one photo to publish your spot</label>
           <input
             id='image-link'
             type='text'
-            placeholder="Preview Image"
+            placeholder="Preview Image URL"
             onChange={e => setPreviewImage(e.target.value)}
           />
+            <div className="error-text">{errors.previewImage}</div>
         </div>
-        <div className="error-text">{errors.previewImage}</div>
         <div>
           <label htmlFor='image-link'></label>
           <input

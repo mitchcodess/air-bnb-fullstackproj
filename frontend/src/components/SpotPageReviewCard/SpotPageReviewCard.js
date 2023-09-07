@@ -43,7 +43,7 @@ function SpotPageReviewCard({
           <li>{review}</li>
           {sessionUser
             ? sessionUser.id === reviewUserId && (
-                <OpenModalButton
+                <OpenModalButton className='delete-button'
                   modalComponent={
                     <DeleteModal
                       id={id}

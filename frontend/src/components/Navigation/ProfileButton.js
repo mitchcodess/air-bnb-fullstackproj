@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
@@ -12,6 +12,7 @@ function ProfileButton({ user }) {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -51,12 +52,14 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
+          <div className="user-dropdown">
+            <li>Hello, {user.username}.</li>
             <li>{user.email}</li>
-            <NavLink to="/spots/current">Manage Havens</NavLink>
+            <li className="manage-link"><NavLink to="/spots/current">Manage Havens</NavLink></li>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button className = "profile-logout-button"onClick={logout}>Log Out</button>
             </li>
+            </div>
           </>
         ) : (
           <>

@@ -39,6 +39,10 @@
   letter-spacing: 2px;
   cursor: pointer;
 }
+.login-modal__login-button:disabled {
+  background-color: rgb(182, 182, 182);
+  cursor: not-allowed;
+}
 
 .login-modal-input {
   width: 75%;

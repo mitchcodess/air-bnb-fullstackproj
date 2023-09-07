@@ -55,13 +55,14 @@ function ManagePage() {
                     src={spot.previewImage}
                     manage={manage}
                   />
+                  <div className="manage-item-button__container">
                   <UpdateButton id={spot.id} />
                   <OpenModalButton 
                     modalComponent={
                       <DeleteModal
                         id={spot.id}
                         title={"Confirm Haven Deletion"}
-                        message={"Are you sure you want to delete this Haven?"}
+                        message={"Are you sure you want to remove this Haven from the listings?"}
                         confirmMessage={"Yes (Delete Haven)"}
                         cancelMessage={"No (Keep Haven)"}
                         onConfirm={onConfirm}
@@ -70,6 +71,7 @@ function ManagePage() {
                     }
                     buttonText={"Delete"}
                   />
+                </div>
                 </div>
               </>
             );
