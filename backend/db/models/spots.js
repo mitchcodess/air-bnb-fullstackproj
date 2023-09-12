@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     description: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(500)
     },
     price: {
       type: DataTypes.DECIMAL
