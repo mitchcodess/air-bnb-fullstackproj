@@ -42,6 +42,7 @@ function SpotPageReviews({ reviews, reviewCount, avgRating, id, ownerId }) {
           
           return (
             <SpotPageReviewCard
+             key={review.id}
               id={review.id}
               review={review.review}
               date={review.createdAt}

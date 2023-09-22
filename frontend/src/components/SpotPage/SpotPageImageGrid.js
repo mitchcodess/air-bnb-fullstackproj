@@ -13,7 +13,7 @@ function SpotPageImageGrid({ images }) {
       <div className="spot-page-image-support__grid__container">
         {supportimages.map((image) => {
           return (
-            <div>
+            <div key={image.id}>
               <img src={image.url} key={image.id} alt="supporting" />
             </div>
           );
