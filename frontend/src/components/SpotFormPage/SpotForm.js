@@ -110,7 +110,7 @@ function SpotForm({
     };
 
     if (formType === "update") {
-      console.log("UPDATING SPOT");
+  
       let updatedSpot = await dispatch(updateSpotThunk(payload, id));
 
       navigate(`/spots/${updatedSpot.id}`);
@@ -154,7 +154,7 @@ function SpotForm({
           await dispatch(addSpotImageThunk(newSpot.id, image5Payload));
          }
 
-        console.log("NAVIGATING TO NEW SPOT");
+
         navigate(`/spots/${newSpot.id}`);
         
       }

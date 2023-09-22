@@ -184,7 +184,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     bookingsToJSON.push(jsonSpot);
   }
 
-  console.log(bookingsToJSON[0].Spot.SpotImages);
+
 
   //Finding the spot in each booking then taking the spot images of those spots and finding the preview image. Adding that property to the spot object.
   for (let i = 0; i < bookingsToJSON.length; i++) {
@@ -194,11 +194,11 @@ router.get("/current", requireAuth, async (req, res, next) => {
     for (let j = 0; j < spotImagesOfCurrentBooking.length; j++) {
       let image = spotImagesOfCurrentBooking[j];
       if (image.preview === true) {
-        bookingsToJSON[i].Spot.prevewImage = image.url;
+        bookingsToJSON[i].Spot.previewImage = image.url;
       }
     }
-    if (!bookingsToJSON[i].Spot.prevewImage) {
-      bookingsToJSON[i].Spot.prevewImage = "No preview image found";
+    if (!bookingsToJSON[i].Spot.previewImage) {
+      bookingsToJSON[i].Spot.previewImage = "No preview image found";
     }
 
     delete bookingsToJSON[i].Spot.SpotImages;

@@ -1,7 +1,7 @@
 import React from "react";
 import SpotPageBookingCard from "./SpotPageBookingCard";
 import "./SpotPageDescription.css";
-function SpotPageDescription({ Owner, description, avgRating, reviewCount, price }) {
+function SpotPageDescription({ Owner, description, avgRating, reviewCount, price, spotId }) {
   return (
     <div>
       <h2>{`Hosted by ${Owner.firstName} ${Owner.lastName}`}</h2>
@@ -14,6 +14,7 @@ function SpotPageDescription({ Owner, description, avgRating, reviewCount, price
             avgRating={avgRating}
             reviewCount={reviewCount}
             price={price}
+           spotId={spotId}
           />
         </div>
       </div>

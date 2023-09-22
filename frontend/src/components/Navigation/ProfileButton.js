@@ -56,6 +56,7 @@ function ProfileButton({ user }) {
             <li>Hello, {user.username}.</li>
             <li>{user.email}</li>
             <li className="manage-link"><NavLink to="/spots/current">Manage Havens</NavLink></li>
+            <li>Manage Bookings</li>
             <li>
               <button className = "profile-logout-button"onClick={logout}>Log Out</button>
             </li>

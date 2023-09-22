@@ -20,7 +20,7 @@ function SpotPageReviews({ reviews, reviewCount, avgRating, id, ownerId }) {
       ? false
       : true
     : false;
-console.log(reviews)
+
   return (
     <>
       <div className="spot-page-reviews">

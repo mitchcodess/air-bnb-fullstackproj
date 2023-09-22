@@ -11,18 +11,24 @@ export default function LandingPage() {
   const spotsObj = useSelector((state) => state.allSpots.allSpots);
   const spots = Object.values(spotsObj);
   const dispatch = useDispatch();
+
+
+
   useEffect(() => {
     dispatch(getSpotsThunk());
   }, [dispatch]);
 
-  if (!spots.length) return null;
+  if (!spots.length) 
+  {return null}
+ 
+
 
   return (
     <>
       {/* <div className="main">
         <video className="main-video" src={video} autoPlay loop muted></video>
       </div> */}
-      <div className="spots-container">
+     {<div className="spots-container">
         {spots.map((spot) => {
           return (
             <VenueSpotCard
@@ -39,6 +45,7 @@ export default function LandingPage() {
           );
         })}
       </div>
+    }
     </>
   );
 }

@@ -93,7 +93,7 @@ const spotsReducer = (state = initialState, action) => {
       const newSpots = {};
       action.spots.Spots.forEach((spot) => {
         newSpots[spot.id] = spot;
-        console.log(newSpots);
+      
       });
       return { ...state, allSpots: { ...newSpots } };
     case ADD_SPOT:

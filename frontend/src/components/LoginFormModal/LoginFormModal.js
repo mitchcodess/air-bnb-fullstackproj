@@ -31,7 +31,7 @@ function LoginFormModal() {
 
   }
 
-  const handlePassword = (e) => {
+  const handlePassword = (e) => { 
     setPassword(e.target.value)
   }
 
