@@ -4,6 +4,7 @@ import VenueSpotCard from "./SpotCard";
 import { getSpotsThunk } from "../../store/allSpots";
 import "./LandingPage.css";
 import video from "../../assets/video/main.mp4";
+import VideoBackground from "../VideoBackground.js/VideoBackground";
 //useEffect to get all spots
 //useSelector to detect changes in state
 
@@ -19,9 +20,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <div className="main">
-        <video className="main-video" src={video} autoPlay loop muted></video>
-      </div>
+     <VideoBackground />
       <div className="spots-container">
         {spots.map((spot) => {
           return (

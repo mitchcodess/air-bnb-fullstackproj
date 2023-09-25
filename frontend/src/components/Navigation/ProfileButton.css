@@ -24,13 +24,14 @@
  
   width: 200px;
   height: 200px;
-  position: absolute;
+  position: relative;
   margin-top: 11px;
   border-radius: 0.5em;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 0;
 }
 
 .user-dropdown {

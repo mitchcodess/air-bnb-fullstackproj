@@ -12,8 +12,7 @@ function ProfileButton({ user }) {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-  const sessionUser = useSelector((state) => state.session.user);
-
+  
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -34,6 +33,7 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const closeMenu = () => setShowMenu(false);
+
 
   const logout = (e) => {
     e.preventDefault();
